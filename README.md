@@ -1,11 +1,11 @@
-# 🚀 Kobot AI OS Starter (코봇 AI 연구팀 지식 체계 · Part 1~9 완결판)
+# Kobot AI OS Starter (코봇 AI 연구팀 지식 체계 · Part 1~9 완결판)
 
 > **긴 강의 파일들을 일일이 찾아 읽거나, 처음부터 Obsidian 설정과 씨름할 필요가 없습니다.**
 > 팀장이 Part 1~9 전 과정을 먼저 완주하며 부딪힌 **오류 10가지를 구조적으로 예방**해 두었습니다.
 
 ---
 
-## 🎯 코봇 팀 추천 2단계 운영 전략
+## 코봇 팀 추천 2단계 운영 전략
 
 1. **1단계 · 구축 및 실습 (`Obsidian 최소화 · AI 앱 창 하나로 완주`):**
    - 이 저장소를 내려받은 뒤 **Obsidian을 계속 켜두지 않아도** 데스크탑 AI 앱(Antigravity · Gemini · GPT · Claude 등) 창 하나만으로 온보딩부터 Part 9 실습까지 끝낼 수 있습니다.
@@ -16,7 +16,7 @@
 
 ---
 
-## ⚡ 30초 시작하기 (트랙 A · B 중 택 1)
+## 30초 시작하기 (트랙 A · B 중 택 1)
 
 ### 트랙 A · 데스크탑 AI 에이전트 사용 조원 (Antigravity · Gemini CLI · Codex)
 1. 이 저장소를 `git clone`(또는 `Code` → `Download ZIP`)합니다.

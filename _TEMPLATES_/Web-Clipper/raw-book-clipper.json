@@ -1,0 +1,21 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "RAW · 도서",
+	"behavior": "create",
+	"noteContentFormat": "## 저장 이유 & 내 반응 (한 줄)\n- \n\n---\n\n{{content}}",
+	"properties": [
+		{ "name": "type", "value": "raw", "type": "text" },
+		{ "name": "created", "value": "{{date|date:\"YYYY-MM-DD\"}}", "type": "date" },
+		{ "name": "tags", "value": "raw", "type": "multitext" },
+		{ "name": "status", "value": "unread", "type": "text" },
+		{ "name": "source", "value": "{{url}}", "type": "text" }
+	],
+	"triggers": [
+		"https://www.yes24.com",
+		"https://www.aladin.co.kr",
+		"https://www.goodreads.com",
+		"https://product.kyobobook.co.kr"
+	],
+	"noteNameFormat": "{{date|date:\"YYYY-MM-DD\"}} - {{title|safe_name}}",
+	"path": "Archive/raw/도서"
+}

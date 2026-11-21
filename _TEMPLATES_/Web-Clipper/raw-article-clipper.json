@@ -1,0 +1,16 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "RAW · 아티클 (웹·기술블로그)",
+	"behavior": "create",
+	"noteContentFormat": "## 저장 이유 & 내 반응 (한 줄)\n- \n\n---\n\n{{content}}",
+	"properties": [
+		{ "name": "type", "value": "raw", "type": "text" },
+		{ "name": "created", "value": "{{date|date:\"YYYY-MM-DD\"}}", "type": "date" },
+		{ "name": "tags", "value": "raw", "type": "multitext" },
+		{ "name": "status", "value": "unread", "type": "text" },
+		{ "name": "source", "value": "{{url}}", "type": "text" }
+	],
+	"triggers": [],
+	"noteNameFormat": "{{date|date:\"YYYY-MM-DD\"}} - {{title|safe_name}}",
+	"path": "Archive/raw/아티클"
+}

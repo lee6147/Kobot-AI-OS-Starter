@@ -1,0 +1,23 @@
+# Obsidian local workspace & cache (keep shared vault structure clean)
+.obsidian/workspace*.json
+.obsidian/cache
+.obsidian/cache/
+
+# Tool-specific local configs (shared skills live in .agents/skills/)
+.claude/
+
+# OS & editor temporary files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.bak
+*~
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment & secrets
+.env
+.env.*

@@ -1,0 +1,22 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "RAW · 데이터시트·논문",
+	"behavior": "create",
+	"noteContentFormat": "## 저장 이유 & 내 반응 (한 줄)\n- \n\n---\n\n{{content}}",
+	"properties": [
+		{ "name": "type", "value": "raw", "type": "text" },
+		{ "name": "created", "value": "{{date|date:\"YYYY-MM-DD\"}}", "type": "date" },
+		{ "name": "tags", "value": "raw", "type": "multitext" },
+		{ "name": "status", "value": "unread", "type": "text" },
+		{ "name": "source", "value": "{{url}}", "type": "text" }
+	],
+	"triggers": [
+		"https://arxiv.org",
+		"https://www.ti.com",
+		"https://www.st.com",
+		"https://ieeexplore.ieee.org",
+		"https://scholar.google.com"
+	],
+	"noteNameFormat": "{{date|date:\"YYYY-MM-DD\"}} - {{title|safe_name}}",
+	"path": "Archive/raw/데이터시트-논문"
+}

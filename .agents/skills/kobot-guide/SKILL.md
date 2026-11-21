@@ -14,7 +14,7 @@ description: "조원이 GitHub 클론 후 Obsidian을 켜지 않고 AI 앱 창 �
 
 | 확인 위치 | 실측 항목 | 판정 의미 |
 |---|---|---|
-| `0_Me/ONBOARDING_STATUS.md` | `completed: false \| true`, `Before-Diagnosis.md` 유무 | Stage 0~1 판정 |
+| `0_Me/ONBOARDING_STATUS.md` | `completed: false \| true`, `guide_stage`, `guide_step`, `Before-Diagnosis.md` 유무 | 현재 진행 단계·스텝 판정 |
 | `0_Me/` | `Purpose-L1L2L3.md`, `My-Knowledge-Domain.md`, `5S-자가진단-*.md`, `자가진단-3축*.md`, `30-90-365*.md` | Part 4~5 · Part 9 완료 여부 |
 | `Welcome/` | `.gitkeep` 제외 파일 수 | 미분류 덤프·음성 원문 유무 |
 | `Ark/` & `Ark/Blocks/` | 맞춤 주제 방 내 `BRAIN-Note` 수, `Daily/`, `Reviews/`, `Blocks/*.md` 수 | Part 6~9 진행 여부 |
@@ -27,8 +27,8 @@ description: "조원이 GitHub 클론 후 Obsidian을 켜지 않고 AI 앱 창 �
 ## 에이전트 실행 절차
 
 ### 1단계 · 진도 실측 스캔 (항상 가장 먼저 실행, 추측 금지)
-1. 위 표의 모든 경로를 실제로 확인해 파일 유무와 개수를 셉니다.
-2. 실측 결과를 바탕으로 현재 조원이 **Stage 0 ~ Stage 5 (Part 1~9)** 중 어디에 있는지 판정하고 **3줄 현황표**로 보고합니다.
+1. 위 표의 모든 경로를 실제로 확인해 `guide_stage`·`guide_step` 및 실제 파일 유무·개수를 교차 확인합니다.
+2. 실측 결과를 바탕으로 현재 조원이 **Stage 0 ~ Stage 5 (Part 1~9)** 중 어디에 있는지 판정하고 **3줄 현황표**로 보고합니다. (`guide_stage`/`guide_step`이 기록되어 있으면 직전 스텝 바로 다음부터 재개합니다.)
 3. 사용자가 특정 Part(예: *"Part 1부터 실습하자"*, *"Part 4부터 실습"*)를 직접 지정하면 해당 Stage부터 시작하되, `0_Me/ONBOARDING_STATUS.md`가 `completed: false`인데 Part 6 이상을 요청하면 **"먼저 Stage 1(`/kobot-onboard`)으로 내 주제 방과 5규약을 세팅해야 노트가 갈 곳을 찾습니다"**라고 안내해 Stage 1을 먼저 밟게 합니다.
 
 ---
@@ -44,15 +44,16 @@ description: "조원이 GitHub 클론 후 Obsidian을 켜지 않고 AI 앱 창 �
   3. **Brain Trinity 6엣지 (`2.2.1`):** `I/F-A`(인간 단독: ① 외부화/누락 · ② 내부화/망각), `I/F-B`(AI 단독: ③ 정착/컨텍스트 한계 · ④ 종합/환각), `I/F-C`(공동 협업: ⑤ 조정/휘발성 · ⑥ 비계/과의존) 6엣지 중 **실패 모드를 가장 자주 겪는 약한 선 1개 · 이유 1줄 · 8주 실현 계획 3줄**을 적습니다.
   4. **AI 도입 전·후 비교 (`2.2.2`):** `아침 · 낮 · 저녁` × (`AI가 나를 모를 때` vs `알 때`) 6칸 중 핵심 칸을 채우고, **★ 가장 보고 싶은 변화(`#1 목표` 1문장 + 이유 1줄)**를 선언합니다.
   5. **하네스 5요소 & 주의사항 `#1` (`3.1.3~3.1.4`):** `MAAP Actions`에서 출발해 `Memory · Skill · Agent · MCP · Hook` 5부품의 1~5순위와 첫 사례 1줄을 정하고, **주의사항 `#1`(*"수동 구조화 0 × AI 100 = 0 — Part 4 그릇에서 멈추면 화려한 빈 그릇"*)**을 확인합니다.
-- **저장:** 조원이 원하면 `_TEMPLATES_/Before-Diagnosis.md` 양식(`{{date:YYYY-MM-DD}}` 치환)으로 `0_Me/Before-Diagnosis.md`에 저장하고 Stage 1로 연결합니다.
+- **저장 & 연결:** 답안을 정리해 `_TEMPLATES_/Before-Diagnosis.md` 양식(`{{date:YYYY-MM-DD}}` 치환)으로 `0_Me/Before-Diagnosis.md`에 저장하고, `0_Me/ONBOARDING_STATUS.md`에 `guide_stage: stage-0`, `guide_step: Stage 0 완료 (다음: Stage 1 /kobot-onboard)`를 기록한 뒤 Stage 1 핵심 브리핑 및 `/kobot-onboard`로 자연스럽게 이어갑니다.
 
-#### Stage 1 · Part 4~5: 입주 · 맥락 · 6방 뼈대 · 5규약
-- **목표:** 내 맥락(`L1·L2·L3` & 지식영역)을 세우고 맞춤형 폴더를 생성합니다.
-- **핵심 브리핑 포인트 (`_GUIDES_/Part4~9-핵심정리.md` 참조):**
-  1. **왜 6방을 나누는가 (`2축 원칙`):** "주제로 쌓고(`Ark/`), 역할·프로젝트로 꺼낸다(`Lab/`)." 입구(`Welcome/`) → 인간 생각(`Ark/`) vs AI 책장(`Archive/wiki/`) 분리로 AI가 내 노트를 덮어쓰지 못하게 격리하고, `Outputs/` 단일 출구로 중복을 막습니다.
-  2. **왜 `5규약`을 쓰는가 (`4.2.3`):** `type`, `created`, `tags`, `status`, `source` 5개만 최소 통일해 Obsidian 전역 속성 폭증을 막습니다.
-  3. **왜 `PAGE_CAP = 15`인가 (`5.3.5`):** 위키가 처음부터 비대해지면 AI가 중간 노트를 건너뛰는 신뢰 붕괴(함정 `#4`)가 오므로 작게 유지합니다.
-- **실습 액션:** `completed: false`라면 `/kobot-onboard`를 즉시 실행해 4단계 인터뷰 → 맞춤형 6방 · `0_Me/` 4종 · `Archive/wiki/index.md` · 첫 `Lab/Projects/`를 구축합니다.
+#### Stage 1 · Part 4~5: 입주 · 주권 · 하네스 · 6방 뼈대 · 5규약
+- **목표:** AI에게 나를 이해시키고(`0_Me/`), 내 생각 방과 AI 책장을 분리한 맞춤형 폴더를 세팅합니다.
+- **핵심 브리핑 포인트 (`_GUIDES_/Part4~9-핵심정리.md` 참조 — 일상 비유로 쉽게 설명):**
+  1. **주인은 항상 가운데 (`4.1` & `3rd Brain` 구분):** 로컬 `.md` 파일(내 기록)과 AI 에이전트(보조 두뇌)가 도와주더라도 방향키와 최종 결정권은 사람에게 둡니다. `Archive/wiki/`는 AI가 엮는 백과사전, `Ark/`는 내 생각 성역입니다.
+  2. **왜 루트 규칙(`AGENTS.md`)을 200줄 이내로 줄이고 `MCP·Skill·Hook`을 구분하나 (`4.3~4.4` & 주의사항 `#2`):** 규칙 파일이 300~400줄을 넘기면 AI가 중간 규칙을 건너뜁니다. 그래서 긴 매뉴얼은 `.agents/skills/`(Skill)로 빼고, 볼트 안 `.md`는 기본 5도구로 이미 100% 다뤄지므로 Obsidian MCP는 불필요합니다. 새 자동화 실험은 메인 볼트에 섞지 않습니다.
+  3. **왜 6방을 나누고 `5규약`·`PAGE_CAP = 15`를 쓰나 (`5.2~5.3`):** *"주제로 쌓고(`Ark/`), 역할·프로젝트로 꺼낸다(`Lab/`)."* `Outputs/` 단일 출구로 중복을 막고, `5규약`(`type`, `created`, `tags`, `status`, `source`)으로 속성 폭증을 막으며, 위키는 당장 쓸 자료 **1~2건씩만 JIT 반입**해 작게 유지합니다.
+  4. **확장 도구 선택 팁 (`4.5` — 나중에 해도 되는 심화):** 긴 PDF 1차 탐색은 NotebookLM, 논문 수십 편 원문 보관은 Zotero로 분리하고, 음성 입력은 유료 녹음기 대신 무료 OS 받아쓰기부터 씁니다.
+- **실습 액션:** `completed: false`라면 `/kobot-onboard`를 실행해 맞춤형 6방 · `0_Me/` 4종 · `Archive/wiki/index.md` · 첫 `Lab/Projects/`를 구축하고, `guide_stage: stage-1` 기록 후 바로 **Stage 2 (Part 6)**로 이어갑니다.
 
 #### Stage 2 · Part 6: 5S · BRAIN Note · LLM Wiki 3대 운영
 > 각 하위 스텝을 **한 번에 1개씩** 차례로 실습합니다.
@@ -113,3 +114,5 @@ description: "조원이 GitHub 클론 후 Obsidian을 켜지 않고 AI 앱 창 �
    - **③ 완료 확인 & 다음 단계 예고:** 이번 스텝 파일/결과 확인 후 다음에 이어질 1줄 예고
 3. **대필 절대 금지 (`Editor-in-Chief`):** `B·R·A`, `Daily Review 내 해석 3줄`, `오늘의 계획`, `저장 이유 & 내 반응`, `9.2.1 파이프라인 3원칙`, `30-90-365 오늘 당장 한 줄`은 **절대 AI가 대신 지어내지 않습니다.**
 4. **Obsidian 최소화 원칙 & 템플릿 날짜 치환:** 모든 실습을 AI 채팅창 안에서 완결하되, `Web Clipper 1회 볼트 등록`과 `노트 15~20개 이상 시 월 1회 그래프 뷰` 예외만 정확히 구분해 알려줍니다. 또한 Obsidian 없이 `_TEMPLATES_/`에서 새 파일(`Daily-Note`, `Template_Weekly-Review` 등)을 생성할 때는 `{{date:YYYY-MM-DD}}`·`{{date-1d:YYYY-MM-DD}}`·`{{date+1d:YYYY-MM-DD}}`·`{{date:gggg-[W]ww}}` 같은 템플릿 문법을 반드시 실제 오늘·어제·내일 날짜와 주차로 치환해 저장합니다.
+5. **쉬운 일상 비유 & 중요도 경중 구분:** 조원이 폴더 개념·원리·용어에 대해 물으면 `_GUIDES_/`와 `_BOT_PACK_/` 근거를 바탕으로 **어려운 학술 용어만 던지지 말고 일상 비유 + 1줄 예시**로 먼저 쉽게 설명합니다. 또한 매 안내마다 **"지금 단계에서 당장 꼭 쓸 핵심(1순위)"** vs **"나중에 해도 되는 심화(2순위)"**를 구분해 조원이 한 번에 압도되지 않게 합니다.
+6. **중간 질문 후 진도 자동 복귀 & `guide_stage` 체크포인트 기록:** 실습 도중 조원이 옆길로 개념·폴더·원리 질문을 던지면 먼저 궁금증을 충분히 해결해 준 뒤, 답변 마지막 줄은 반드시 **`"이해가 되셨으면 아까 하던 Stage X의 Y단계([스텝명])로 다시 이어갈까요?"`**로 진도를 되돌려 줍니다. 또한 각 스텝·Stage를 마칠 때마다 `0_Me/ONBOARDING_STATUS.md`의 `guide_stage`(`stage-0`~`stage-5`·`graduated`)와 `guide_step`을 갱신해 다음 세션에서도 정확히 이어가게 유지합니다.

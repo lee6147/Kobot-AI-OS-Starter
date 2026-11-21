@@ -25,6 +25,8 @@ description: "신규 코봇 조원의 볼트(Kobot-AI-OS-Starter)를 첫 실행 
 - `0_Me/ONBOARDING_STATUS.md`를 읽어 `completed: false`인지 확인합니다. 이미 `true`라면 *"이미 온보딩이 완료되어 있습니다. 주제 방이나 역할을 수정할까요?"*라고 먼저 묻습니다.
 
 ### 2. 4단계 1:1 인터뷰 (한 번에 1~2문항씩 질문 — 몰아 묻기 금지)
+*(선행 체크: 만약 `0_Me/Before-Diagnosis.md`가 이미 있으면 Stage 0에서 답한 `MAAP`·`역할/프로젝트`·`지식 영역 후보` 내용을 먼저 읽고 "Stage 0에서 말씀해 주신 내용 기준으로 맞는지" 확인만 받은 뒤, 비어 있거나 추가 필요한 질문만 물어 중복 질문을 피합니다.)*
+
 사용자가 부담 없이 답하도록 2턴에 나누거나 한 항목씩 묻습니다:
 
 1. **기본 프로필:** "볼트에서 사용할 이름(닉네임)과 AI가 어떤 말투(예: 존댓말/간결형)로 답하면 좋을까요?"
@@ -49,13 +51,15 @@ description: "신규 코봇 조원의 볼트(Kobot-AI-OS-Starter)를 첫 실행 
 6. `Archive/wiki/index.md`에 확정된 3~5개 카테고리 섹션(`## 1. ...`) 및 1줄 설명 초기화
 7. `Lab/Projects/<첫 프로젝트명>.md` 생성 (`_TEMPLATES_/Template_Project.md` 기반으로 `{{date:YYYY-MM-DD}}`를 실제 날짜로 치환해 승인된 첫 프로젝트 1개 자동 생성)
 8. `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`의 §1에 사용자 이름·역할 반영 (세 파일 해시 동일 유지)
-9. `0_Me/ONBOARDING_STATUS.md`를 `completed: true`, `user_name`, `track: track-a`, `domain_tags` 기입으로 갱신
+9. `0_Me/ONBOARDING_STATUS.md`를 `completed: true`, `user_name`, `track: track-a`, `domain_tags`, `guide_stage: stage-1`, `guide_step: Stage 1 완료 (다음: Stage 2 - 1번 JIT /ingest)` 기입으로 갱신 *(단, `0_Me/Before-Diagnosis.md`가 아직 없으면 `"Stage 0 미완료 — 필요 시 Part 1~3 워밍업 가능"` 병기)*
 10. `Archive/log.md`에 `## [YYYY-MM-DD HH:MM] init | [사용자명] 맞춤형 온보딩 완료` 기록
 
-### 5. 첫 실전 행동 1개 즉시 유도
-완료 보고 후, 개념 설명을 길게 늘어놓지 말고 바로 첫 행동을 제안합니다:
-- *"세팅이 완료되었습니다! 1주차에는 딱 3가지(`/brain-add-seed`, `/ingest`, `/query`)만 쓰시면 됩니다. 지금 막 공부하신 내용 1줄이나 자료 1개만 던져 주세요. 첫 노트를 바로 만들어 드리겠습니다."*
-- *"만약 개념 원리부터 순서대로 1:1 코칭을 받으며 실습을 완주하고 싶다면, Obsidian을 켜지 말고 바로 **`/kobot-guide`** (예: **\"Part 6부터 순서대로 실습 이끌어 줘\"**)라고 말씀해 주세요."*
+### 5. 다음 단계 순차 코칭 연결 (끊김 방지)
+완료 보고 후, 개념 설명을 길게 늘어놓지 말고 조원의 상태에 맞춰 **순차 진행 1순위**를 먼저 제안합니다:
+- **`0_Me/Before-Diagnosis.md`가 이미 있는 경우 (Stage 0 완료자):**
+  *"폴더와 규약 세팅(`Stage 1`)까지 완료되었습니다! 이제 `/kobot-guide`의 **`Stage 2 (Part 6)` 첫 실습 — 외부 자료 1건 넣어보기(`/ingest`) 또는 내 생각 1장 심기(`/brain-add-seed`)**로 바로 이어갈까요?"*
+- **`0_Me/Before-Diagnosis.md`가 아직 없는 경우 (Stage 0 미진행자):**
+  *"폴더와 규약 세팅(`Stage 1`)이 끝났습니다! 이제 `Part 1~9`를 빠뜨리지 않고 차근차근 진행하려면 **① 가볍게 `Part 1~3` 마인드셋 워밍업(`Stage 0`)부터 짚고 갈까요, 아니면 ② 바로 `Part 6 (Stage 2)` 첫 실습부터 시작할까요?** (바로 공부 메모 1줄을 던져 주셔도 즉시 노트로 만들어 드립니다.)"*
 
 ---
 

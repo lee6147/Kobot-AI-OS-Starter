@@ -19,7 +19,7 @@
 ## 30초 시작하기 (트랙 A · B 중 택 1)
 
 ### 트랙 A · 데스크탑 AI 에이전트 사용 조원 (Antigravity · Gemini CLI · Codex)
-1. 이 저장소를 `git clone`(또는 `Code` → `Download ZIP`)합니다.
+1. 이 저장소를 `git clone`(또는 `Code` → `Download ZIP`)합니다. *(주의: 클론 후 본인 개인 기록 `0_Me/`·`Ark/`를 이 공유 원격 `origin`에 다시 `git push`하지 마세요. 원격 백업이 필요하면 본인 Private 레포를 새 원격으로 연결해 사용하세요.)*
 2. **Obsidian을 켜지 말고** 이 폴더를 작업 경로로 AI 앱을 연 뒤, **바로 던지는 첫 마디 3가지** 중 하나로 시작하세요:
    1. **`"온보딩 시작"`** (또는 `/kobot-onboard`) — 내 역할·주제 방·5규약 태그 자동 세팅 *(최초 1회 권장)*
    2. **`"/kobot-guide"`** (또는 `"Part 1부터 / Part 4부터 순서대로 같이 실습하자"`) — Part 1~3 워밍업 또는 현재 진도 스캔부터 Part 9 졸업까지 1:1 단계별 실습 코칭
@@ -34,7 +34,7 @@
 1. **`Code` → `Download ZIP`**으로 압축을 풉니다.
 2. 웹 AI에서 새 **Gem(Gemini)** 또는 **Project(Grok)**를 만들고 `_BOT_PACK_/`의 **딱 2개 파일**만 넣습니다:
    - **지침(Instructions) 복붙:** `_BOT_PACK_/BOT_SYSTEM_PROMPT.md`
-   - **지식(Knowledge) 첨부:** `_BOT_PACK_/KOBOT_STARTER_KNOWLEDGE_PACK.md`
+   - **지식(Knowledge) 첨부:** `_BOT_PACK_/KOBOT_STARTER_KNOWLEDGE_PACK.md` *(선택: Part 1~9 원리까지 깊게 코칭받으려면 `_GUIDES_/Part1~3-핵심정리.md`, `Part4~9-핵심정리.md`도 함께 업로드 권장)*
 3. 채팅창에 **"온보딩 시작"**을 치거나, 공부 메모·음성 1분 덤프를 던지면 저장 폴더·파일명·완성 `.md` 파일을 바로 출력해 줍니다.
 
 ---
@@ -42,5 +42,5 @@
 ## 📦 포함된 Part 1~9 핵심 자산
 - **`.agents/skills/` (13종):** `kobot-onboard` · `kobot-guide`(Part 1~9 단계별 1:1 실습 코치) · `brain-*` 5종 · `ingest` · `query` · `lint` · `planner-align`(볼트 내부 완결형) · `log`(2층 단독 표준) · `create-card-news`
 - **`_GUIDES_/` (4종):** `Part1~3-핵심정리.md` · `Part4~9-핵심정리.md` · `가이드-①-터미널익숙버전.md` · `가이드-②-터미널부담버전.md` (Obsidian 없이도 원리와 실습 순서를 바로 따라가는 핵심 가이드)
-- **`_TEMPLATES_/` (14종):** `5S-자가진단` · `BRAIN-Note` · `Daily-Note`(2단 리뷰) · `Daily-Reflect` · `Source-Article` · `Template_Project` · `Template_Task` · `Template_Weekly-Review` · `자가진단-3축` · `30-90-365 체크리스트` · `Web-Clipper/*.json` 4종(`https://` 트리거 & `저장 이유/반응` 헤딩 포함)
+- **`_TEMPLATES_/` (14종):** `5S-자가진단` · `BRAIN-Note` · `Daily-Note`(2단 리뷰) · `Daily-Reflect` · `Source-Article` · `Template_Project` · `Template_Task` · `Template_Weekly-Review` · `자가진단-3축` · `30-90-365 체크리스트` · `Web-Clipper/*.json` 4종(`book`·`datasheet`·`lecture-video` 3종 `https://` 도메인 트리거, `article`은 전 웹페이지 수동 실행 `triggers: []` & `저장 이유/반응` 헤딩 포함)
 - **`_BOT_PACK_/`:** [`KOBOT_STARTER_KNOWLEDGE_PACK.md`](_BOT_PACK_/KOBOT_STARTER_KNOWLEDGE_PACK.md) (7대 함정·Part 1~9 원리) · [`TEAM_LEADER_DECISION_LOG.md`](_BOT_PACK_/TEAM_LEADER_DECISION_LOG.md) (오류 10종 예방 & D1~D14 의사결정 로그) · [`BOT_SYSTEM_PROMPT.md`](_BOT_PACK_/BOT_SYSTEM_PROMPT.md)

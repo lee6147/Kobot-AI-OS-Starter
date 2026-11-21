@@ -62,7 +62,7 @@ Outputs/ (최종 산출물) ◀── Lab/ (실행: Projects·Tasks·Materials) 
 
 ## PART 3. Frontmatter 5규약 요약 (상세 정본: `0_Me/_FRONTMATTER_REGS.md`)
 
-- **기본 5키:** `type`(`me|memo|note|wiki|project|task|material|output`) · `created`(`YYYY-MM-DD`) · `tags`(온보딩 시 정한 소문자 주제 태그 최소 1개, `#` 및 메타태그 금지) · `status`(지식·위키 `draft|organized|shared` / 프로젝트 `planning|in-progress|on-hold|done` / 태스크 `todo|doing|done` / 재료 `active|archived`) · `source`(외부 기반일 때만 기입)
+- **기본 5키:** `type`(`me|memo|note|raw|wiki|project|task|material|output`) · `created`(`YYYY-MM-DD`) · `tags`(온보딩 시 정한 소문자 주제 태그 최소 1개, `#` 및 메타태그 금지; 단 `Archive/raw/` 원본만 `raw` 허용) · `status`(지식·위키 `draft|organized|shared` / 원본 `raw` `unread|ingested` / 프로젝트 `planning|in-progress|on-hold|done` / 태스크 `todo|doing|done` / 재료 `active|archived`) · `source`(외부 기반일 때만 기입)
 - **보조 키:** `stage`(`seed|bloom|connected`), `block_type`, `compiled_to`, `related`, `project`, `due`, `est_hours`, `role`, `target_date`, `goal`, `material_role`
 
 ---

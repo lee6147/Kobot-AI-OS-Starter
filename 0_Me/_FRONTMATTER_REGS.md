@@ -16,10 +16,10 @@ source: "[[_BOT_PACK_/KOBOT_STARTER_KNOWLEDGE_PACK]]"
 
 | # | 키 | 뜻 | 규약 |
 |---|---|---|---|
-| ① | `type` | 노트 종류 | 폴더와 1:1 — `me`(`0_Me`) · `memo`(`Welcome`) · `note`(`Ark`) · `wiki`(`Archive/wiki`) · `project`·`task`·`material`(`Lab`) · `output`(`Outputs`) |
+| ① | `type` | 노트 종류 | 폴더와 1:1 — `me`(`0_Me`) · `memo`(`Welcome`) · `note`(`Ark`) · `raw`(`Archive/raw`) · `wiki`(`Archive/wiki`) · `project`·`task`·`material`(`Lab`) · `output`(`Outputs`) |
 | ② | `created` | 생성일 | `YYYY-MM-DD` 한 형식만 (예: `2026-11-16`) |
-| ③ | `tags` | 연결 주제 | 온보딩 시 확정한 본인 `Ark/` 방과 맞춘 소문자 태그 최소 1개 (`#` 없이) |
-| ④ | `status` | 진행 단계 | 지식·위키 `draft → organized → shared` · 프로젝트 `planning → in-progress → on-hold → done` · 태스크 `todo → doing → done` · 재료 `active → archived` |
+| ③ | `tags` | 연결 주제 | 온보딩 시 확정한 본인 `Ark/` 방과 맞춘 소문자 태그 최소 1개 (`#` 없이; 단 `Archive/raw/` 클리핑 원본만 `raw` 허용) |
+| ④ | `status` | 진행 단계 | 지식·위키 `draft → organized → shared` · 원본(`raw`) `unread → ingested` · 프로젝트 `planning → in-progress → on-hold → done` · 태스크 `todo → doing → done` · 재료 `active → archived` |
 | ⑤ | `source` | 출처 | 외부 자료 기반일 때만 URL, 강의명·회차 또는 `[[Archive/raw/...]]`. 순수 내 생각이면 비워 둠 |
 
 ## 🏷️ 나의 주제 태그 목록 (`tags` 허용값 — 온보딩 시 본인 전공·역할에 맞게 수정)

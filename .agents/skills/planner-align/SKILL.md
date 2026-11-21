@@ -21,7 +21,7 @@ description: 데일리 노트의 "오늘의 계획" 항목을 `Lab/Tasks/` 태�
 | `TEMPLATE_DAILY` | `_TEMPLATES_/Daily-Note.md` | 데일리 노트 생성 양식 |
 
 ## 에이전트 실행 절차
-1. **데일리 노트 확인:** `DAILY_NOTE_DIR/{오늘 YYYY-MM-DD}.md`를 읽습니다. 없으면 확인 후 `_TEMPLATES_/Daily-Note.md`로 생성합니다. **`## 오늘의 계획`이 비어 있으면 AI가 임의로 채우지 않고 멈춥니다 (함정 `#6` 순서 역전 금지).**
+1. **데일리 노트 확인:** `DAILY_NOTE_DIR/{오늘 YYYY-MM-DD}.md`를 읽습니다. 없으면 확인 후 `_TEMPLATES_/Daily-Note.md`로 생성하되, Obsidian 없이 생성하므로 **`{{date:YYYY-MM-DD}}`·`{{date-1d:YYYY-MM-DD}}`·`{{date+1d:YYYY-MM-DD}}` 토큰은 반드시 실제 오늘·어제·내일 날짜로 치환**합니다. **`## 오늘의 계획`이 비어 있으면 AI가 임의로 채우지 않고 멈춥니다 (함정 `#6` 순서 역전 금지).**
 2. **항목 파싱 & 중복 방지:** `- [ ] …` 항목 중 이미 `%%[aligned]%%` 마커가 붙은 줄은 건너뜁니다.
 3. **기존 `Lab/Tasks/` 매칭:** 키워드로 기존 `todo`/`doing` 태스크를 찾아 사용자 확인 후 연결·`due` 갱신.
 4. **신규 태스크 생성 (프로젝트성 항목만):** 상위 프로젝트(`Lab/Projects/`)·완료 조건(Done 기준)·`est_hours`(1~3h)를 확인한 뒤 `_TEMPLATES_/Template_Task.md` 규격으로 생성합니다. 단발성 잡일("택배 부치기" 등)은 `Lab/Tasks/`를 만들지 않고 데일리 노트에만 유지합니다.

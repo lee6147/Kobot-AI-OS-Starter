@@ -35,11 +35,11 @@
 
 ## 3. Frontmatter 5규약 (정본: `0_Me/_FRONTMATTER_REGS.md`)
 
-일반 노트는 맨 위에 5개 속성을 반드시 갖춥니다 (`Archive/raw/` 원본 및 시스템 파일 제외).
-- `type`: 폴더 1:1 (`me` · `memo` · `note` · `wiki` · `project` · `task` · `material` · `output`)
+일반 노트는 맨 위에 5개 속성을 반드시 갖춥니다 (`Archive/raw/`는 아래 `raw` 규약 또는 원본 유지).
+- `type`: 폴더 1:1 (`me` · `memo` · `note` · `raw` · `wiki` · `project` · `task` · `material` · `output`)
 - `created`: `YYYY-MM-DD`
-- `tags`: `0_Me/_FRONTMATTER_REGS.md`에 등록된 본인 소문자 주제 태그 최소 1개 (`#` 및 메타태그 금지)
-- `status`: 지식·위키 `draft → organized → shared` / 프로젝트 `planning → in-progress → on-hold → done` / 태스크 `todo → doing → done` / 재료 `active → archived`
+- `tags`: `0_Me/_FRONTMATTER_REGS.md`에 등록된 본인 소문자 주제 태그 최소 1개 (`#` 및 메타태그 금지; 단 `Archive/raw/` 클리핑 원본만 `raw` 허용)
+- `status`: 지식·위키 `draft → organized → shared` / 원본(`raw`) `unread → ingested` / 프로젝트 `planning → in-progress → on-hold → done` / 태스크 `todo → doing → done` / 재료 `active → archived`
 - `source`: 외부 자료 기반일 때만 URL·강의명 또는 `[[Archive/raw/...]]` 기입 (순수 내 생각이면 비워 둠)
 
 ---
@@ -65,4 +65,4 @@
 1. **실물·원본 직접 확인:** 파일 수·경로·근거는 요약이나 추측이 아니라 실제 파일·디렉터리를 확인한 값만 보고합니다.
 2. **SSOT 통합 우선:** 새 폴더나 문서를 덧붙이기 전에 기존 기준 문서와 중복되는지 먼저 점검하고 하나로 유지합니다.
 3. **대필 및 무단 수정 금지:** `Ark/`의 내 생각(`B·R·A`)은 사용자 답변 없이 AI가 임의 대필하지 않으며, `/lint`·`/ingest`는 진단·구조안을 먼저 제시해 승인받고 실행합니다.
-4. **편집 후 검증 & `AGENTS == GEMINI` 동기화:** 작업 완료 후 깨진 링크·경로 오타·해시 동기화(`AGENTS.md` ≡ `GEMINI.md`)를 검증합니다.
+4. **편집 후 검증 · 날짜 치환 · `AGENTS == GEMINI` 동기화:** `_TEMPLATES_/`에서 파일을 생성할 때 `{{date:YYYY-MM-DD}}`·`{{date-1d:YYYY-MM-DD}}`·`{{date+1d:YYYY-MM-DD}}`·`{{date:gggg-[W]ww}}` 토큰은 반드시 실제 날짜·주차로 치환하고, 작업 후 깨진 링크·경로 오타·해시 동기화(`AGENTS.md` ≡ `GEMINI.md`)를 검증합니다.

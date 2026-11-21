@@ -45,7 +45,7 @@ description: 외부 자료(강의 노트, 데이터시트, 논문, 아티클, �
 2. **기존 위키 페이지 업데이트 vs 신규 페이지 생성** 판단
 
 ### 3. `Archive/wiki/<카테고리>/` 페이지 작성·갱신
-사용자 확인 후 `0_Me/_FRONTMATTER_REGS.md`에 등록된 카테고리 폴더에 저장·갱신합니다.
+사용자 확인 후 `0_Me/_FRONTMATTER_REGS.md`에 등록된 카테고리 폴더(미존재 시 생성)에 저장·갱신합니다.
 
 **Frontmatter (`0_Me/_FRONTMATTER_REGS.md` 5규약 필수):**
 ```yaml

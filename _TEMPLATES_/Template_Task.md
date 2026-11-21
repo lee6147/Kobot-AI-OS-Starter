@@ -5,7 +5,7 @@ tags:
   - ai # 상위 프로젝트와 동일 주제 태그 유지 (0_Me/_FRONTMATTER_REGS.md 기준)
 status: todo # 태스크 상태 3단계: todo | doing | done
 source: # 특정 데이터시트·강의 기반일 때 기입, 없으면 비움
-project: "[[Lab/Projects/]]" # 필수 — 상위 프로젝트 wikilink
+project: "" # 필수 — 상위 프로젝트 "[[Lab/Projects/프로젝트명]]" 기입
 due: {{date:YYYY-MM-DD}} # 실행 목표일 (YYYY-MM-DD)
 est_hours: 2 # 예상 몰입 시간 (1~3시간 권장, 3시간 초과 시 분할)
 ---
@@ -24,7 +24,7 @@ est_hours: 2 # 예상 몰입 시간 (1~3시간 권장, 3시간 초과 시 분할
 ---
 
 ## 📚 참조 재료
-- **상위 프로젝트:** [[Lab/Projects/]]
+- **상위 프로젝트:** *(여기에 `[[Lab/Projects/프로젝트명]]` 연결)*
 - **작업 재료 (`Lab/Materials`):** 
 - **관련 위키 / 내 노트 (`Archive` · `Ark`):** 
 

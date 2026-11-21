@@ -1,7 +1,7 @@
-# AGENTS.md — Kobot AI OS Starter 운영 규칙 (Antigravity · Grok · GPT · Gemini 공통)
+# Kobot AI OS Starter 운영 규칙 (Claude Code · Antigravity · Cursor · Codex · Gemini CLI 공통)
 
 > 이 파일은 이 볼트에서 일하는 모든 AI 에이전트가 작업 전 가장 먼저 읽는 루트 하네스입니다.
-> 루트의 `AGENTS.md`와 `GEMINI.md`는 항상 동일한 내용을 유지합니다. 하나를 고치면 둘 다 같이 고칩니다.
+> 루트의 `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`는 항상 동일한 내용을 유지합니다. 하나를 고치면 셋 다 같이 고칩니다.
 
 ---
 
@@ -38,7 +38,7 @@
 일반 노트는 맨 위에 5개 속성을 반드시 갖춥니다 (`Archive/raw/`는 아래 `raw` 규약 또는 원본 유지).
 - `type`: 폴더 1:1 (`me` · `memo` · `note` · `raw` · `wiki` · `project` · `task` · `material` · `output`)
 - `created`: `YYYY-MM-DD`
-- `tags`: `0_Me/_FRONTMATTER_REGS.md`에 등록된 본인 소문자 주제 태그 최소 1개 (`#` 및 메타태그 금지; 단 `Archive/raw/` 클리핑 원본만 `raw` 허용)
+- `tags`: `0_Me/_FRONTMATTER_REGS.md`에 등록된 본인 소문자 주제 태그 최소 1개 (`#` 및 메타태그 금지; 단 시스템 원장·회고용 `record`와 `Archive/raw/` 클리핑 원본 `raw` 기본 허용)
 - `status`: 지식·위키 `draft → organized → shared` / 원본(`raw`) `unread → ingested` / 프로젝트 `planning → in-progress → on-hold → done` / 태스크 `todo → doing → done` / 재료 `active → archived`
 - `source`: 외부 자료 기반일 때만 URL·강의명 또는 `[[Archive/raw/...]]` 기입 (순수 내 생각이면 비워 둠)
 
@@ -57,7 +57,7 @@
 사용자가 아래 명령이나 작업을 요청하면 `.agents/skills/<스킬명>/SKILL.md`를 처음부터 끝까지 읽고 따릅니다.
 - **1주차 필수 & 실습 가이드:** `/kobot-onboard`(초기 세팅) · `/kobot-guide`(Obsidian 없이 Part 1~9 단계별 실습·원리 1:1 코칭) · `/brain-add-seed`(내 생각 1장 심기) · `/ingest`(외부 자료 흡수) · `/query`(근거 기반 질문·역질문 빈틈 코칭) · `/log`(작업 끝 2~3줄 영수증)
 - **2주차 이후 심화 (노트 축적 후):** `/brain-brainify` → `/brain-connect` → `/brain-distill` → `/brain-wiki-sync` · `/planner-align`(데일리 계획 정렬) · `/create-card-news`(5장 요약 카드) · `/lint`(주 1회 위키 건강 점검)
-- 조원이 Obsidian을 켜지 않고 Part 1~9 단계별 실습·원리 안내를 원하면 `/kobot-guide`를 실행하며 `_GUIDES_/` 문서를 참조합니다. 원리나 설계 배경 질문에는 `_GUIDES_/`, `_BOT_PACK_/KOBOT_STARTER_KNOWLEDGE_PACK.md`, `_BOT_PACK_/TEAM_LEADER_DECISION_LOG.md`를 근거로 답합니다.
+- 조원이 Obsidian을 켜지 않고 Part 1~9 단계별 실습·원리 안내를 원하면 `/kobot-guide`를 실행하며 `_GUIDES_/` 문서를 참조합니다. 슬래시(`/`) 자동완성이 뜨지 않는 앱(Cursor · 일부 CLI/GUI 환경)에서는 `.agents/skills/<스킬명>/SKILL.md`를 직접 읽거나 자연어(예: `"온보딩 시작해 줘"`, `"오늘 작업 로그 남겨줘"`)로 요청해도 동일하게 실행합니다. 원리나 설계 배경 질문에는 `_GUIDES_/`, `_BOT_PACK_/KOBOT_STARTER_KNOWLEDGE_PACK.md`, `_BOT_PACK_/TEAM_LEADER_DECISION_LOG.md`를 근거로 답합니다.
 
 ---
 
@@ -65,4 +65,4 @@
 1. **실물·원본 직접 확인:** 파일 수·경로·근거는 요약이나 추측이 아니라 실제 파일·디렉터리를 확인한 값만 보고합니다.
 2. **SSOT 통합 우선:** 새 폴더나 문서를 덧붙이기 전에 기존 기준 문서와 중복되는지 먼저 점검하고 하나로 유지합니다.
 3. **대필 및 무단 수정 금지:** `Ark/`의 내 생각(`B·R·A`)은 사용자 답변 없이 AI가 임의 대필하지 않으며, `/lint`·`/ingest`는 진단·구조안을 먼저 제시해 승인받고 실행합니다.
-4. **편집 후 검증 · 날짜 치환 · `AGENTS == GEMINI` 동기화:** `_TEMPLATES_/`에서 파일을 생성할 때 `{{date:YYYY-MM-DD}}`·`{{date-1d:YYYY-MM-DD}}`·`{{date+1d:YYYY-MM-DD}}`·`{{date:gggg-[W]ww}}` 토큰은 반드시 실제 날짜·주차로 치환하고, 작업 후 깨진 링크·경로 오타·해시 동기화(`AGENTS.md` ≡ `GEMINI.md`)를 검증합니다.
+4. **편집 후 검증 · 날짜 치환 · `AGENTS == GEMINI == CLAUDE` 동기화:** `_TEMPLATES_/`에서 파일을 생성할 때 `{{date:YYYY-MM-DD}}`·`{{date-1d:YYYY-MM-DD}}`·`{{date+1d:YYYY-MM-DD}}`·`{{date:gggg-[W]ww}}` 토큰은 반드시 실제 날짜·주차로 치환하고, 작업 후 깨진 링크·경로 오타·세 파일(`AGENTS.md` ≡ `GEMINI.md` ≡ `CLAUDE.md`) 해시 동기화를 검증합니다.

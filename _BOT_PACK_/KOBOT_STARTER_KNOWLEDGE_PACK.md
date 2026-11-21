@@ -62,8 +62,8 @@ Outputs/ (최종 산출물) ◀── Lab/ (실행: Projects·Tasks·Materials) 
 
 ## PART 3. Frontmatter 5규약 요약 (상세 정본: `0_Me/_FRONTMATTER_REGS.md`)
 
-- **기본 5키:** `type`(`me|memo|note|raw|wiki|project|task|material|output`) · `created`(`YYYY-MM-DD`) · `tags`(온보딩 시 정한 소문자 주제 태그 최소 1개, `#` 및 메타태그 금지; 단 `Archive/raw/` 원본만 `raw` 허용) · `status`(지식·위키 `draft|organized|shared` / 원본 `raw` `unread|ingested` / 프로젝트 `planning|in-progress|on-hold|done` / 태스크 `todo|doing|done` / 재료 `active|archived`) · `source`(외부 기반일 때만 기입)
-- **보조 키:** `stage`(`seed|bloom|connected`), `block_type`, `compiled_to`, `related`, `project`, `due`, `est_hours`, `role`, `target_date`, `goal`, `material_role`
+- **기본 5키:** `type`(`me|memo|note|raw|wiki|project|task|material|output`) · `created`(`YYYY-MM-DD`) · `tags`(온보딩 시 정한 소문자 주제 태그 최소 1개, `#` 및 메타태그 금지; 단 시스템 원장·회고용 `record`와 `Archive/raw/` 원본 `raw`는 기본 허용) · `status`(지식·위키 `draft|organized|shared` / 원본 `raw` `unread|ingested` / 프로젝트 `planning|in-progress|on-hold|done` / 태스크 `todo|doing|done` / 재료 `active|archived`) · `source`(외부 기반일 때만 기입)
+- **보조 키:** `stage`(`seed|bloom|connected`), `block_type`, `compiled_to`, `related`(`Ark/`·`Archive/wiki/`), `lint_flag`, `lowest_item`(`0_Me/자가진단-3축`), `project`, `due`, `est_hours`, `role`, `target_date`, `goal`, `material_role`
 
 ---
 
@@ -103,4 +103,4 @@ Outputs/ (최종 산출물) ◀── Lab/ (실행: Projects·Tasks·Materials) 
      - **Daily & Weekly Review (`9.1.1`):** 매일 저녁 Daily Review 2단(AI 통합 요약 + **AI 대필 없는 내 해석 3줄**), 주 1회 `Template_Weekly-Review` + `/lint`.
      - **에이전트 파이프라인 3원칙 (`9.2.1`):** 본인 루틴을 설계할 때는 ① **트리거(언제 시작하나)** · ② **순서(어떤 스킬/단계를 거치나)** · ③ **판단 지점(어디서 AI를 멈추고 사람이 승인·기각하나)** 3가지를 짧게 고정하고 과도한 무인 자동화를 금지함.
      - **3축 자가진단 & 초기 30일 구조 추가 금지 원칙 (`9.3.1~9.3.2`):** 월 1회 `자가진단-3축`에서 **최저점 딱 1개만** 30일 강화안 수립(`9.3.1`). 초기 세팅 후 **30일간은 새 스킬·새 폴더 구조를 더 추가하지 않고** 기존 루틴 고정에만 집중(`9.3.2`).
-- **실전 막힘 돌파 3팁:** ① 백지에서 질문하기 막막할 땐 `/query`에서 **AI에게 먼저 진단 질문 3~4개**를 내달라고 요청 ② 말로 안 와닿는 원리는 **초보자 비유·HTML 시뮬레이션**으로 시각화해 `Ark/` 씨앗 노트에 연결 ③ **1단계 실습은 Obsidian 최소화 AI 앱 창 하나로 완주(`/kobot-guide`) → 2단계 일상 활용은 Grok 에이전트로 가시성 있게 조회**.
+- **실전 막힘 돌파 3팁:** ① 백지에서 질문하기 막막할 땐 `/query`에서 **AI에게 먼저 진단 질문 3~4개**를 내달라고 요청 ② 말로 안 와닿는 원리는 **초보자 비유·HTML 시뮬레이션**으로 시각화해 `Ark/` 씨앗 노트에 연결 ③ **1단계 실습은 로컬 폴더 에이전트(트랙 A)로 자동 저장 완주(`/kobot-guide`) → 슬래시가 안 뜨는 환경이나 웹 봇(트랙 B)에서는 자연어 지시로 동일 동작 수행.**

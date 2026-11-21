@@ -18,7 +18,7 @@ source: "[[_BOT_PACK_/KOBOT_STARTER_KNOWLEDGE_PACK]]"
 |---|---|---|---|
 | ① | `type` | 노트 종류 | 폴더와 1:1 — `me`(`0_Me`) · `memo`(`Welcome`) · `note`(`Ark`) · `raw`(`Archive/raw`) · `wiki`(`Archive/wiki`) · `project`·`task`·`material`(`Lab`) · `output`(`Outputs`) |
 | ② | `created` | 생성일 | `YYYY-MM-DD` 한 형식만 (예: `2026-11-16`) |
-| ③ | `tags` | 연결 주제 | 온보딩 시 확정한 본인 `Ark/` 방과 맞춘 소문자 태그 최소 1개 (`#` 없이; 단 `Archive/raw/` 클리핑 원본만 `raw` 허용) |
+| ③ | `tags` | 연결 주제 | 온보딩 시 확정한 본인 `Ark/` 방과 맞춘 소문자 태그 최소 1개 (`#` 없이; 단 시스템 원장·회고용 `record`와 `Archive/raw/` 클리핑 원본 `raw`는 기본 허용) |
 | ④ | `status` | 진행 단계 | 지식·위키 `draft → organized → shared` · 원본(`raw`) `unread → ingested` · 프로젝트 `planning → in-progress → on-hold → done` · 태스크 `todo → doing → done` · 재료 `active → archived` |
 | ⑤ | `source` | 출처 | 외부 자료 기반일 때만 URL, 강의명·회차 또는 `[[Archive/raw/...]]`. 순수 내 생각이면 비워 둠 |
 
@@ -35,6 +35,7 @@ source: "[[_BOT_PACK_/KOBOT_STARTER_KNOWLEDGE_PACK]]"
 - `stage`: `Ark/` 내 `BRAIN-Note`의 성숙도 (`seed` | `bloom` | `connected`) — `status`는 `draft`→`organized`→`shared` 유지
 - `block_type`: `Ark/Blocks/` 원자 블록 유형 (`Concept` | `Argument` | `Counter` | `Model` | `Theory` | `Evidence`)
 - `compiled_to`: `Ark/Blocks/` 블록이 `Archive/wiki/`로 컴파일되었을 때 대상 링크 (`[[Archive/wiki/...]]`)
-- `related`: `Archive/wiki/` 교차 참조 위키링크 목록
+- `related`: `Ark/` · `Archive/wiki/` 교차 참조 위키링크 목록
 - `lint_flag`: `/lint` 건강 점검(`180일` 기준) 시 검토가 필요한 페이지 표시 (`stale`)
+- `lowest_item`: `0_Me/자가진단-3축` 노트 전용 선택 보조 키 (30일 강화 대상 최저점 기록)
 - `Lab/` 실행 보조 키: `project`(`Lab/Tasks` 상위 프로젝트 링크), `due`, `est_hours`(`1~3`시간), `role`(`L2` 역할), `target_date`, `goal`, `material_role`(`reference|outline|checklist|asset-map`)

@@ -4,7 +4,7 @@ created: {{date:YYYY-MM-DD}} # 생성일 — YYYY-MM-DD
 tags:
   - ai # 0_Me/_FRONTMATTER_REGS.md에 등록된 내 주제 태그 중 최소 1개 (소문자, # 없이)
 status: draft # 5규약 상태: draft(seed/bloom) | organized(connected) | shared(팀 전파 시)
-source: "[[원본 노트 또는 Archive/raw 경로]]" # 외부 자료 기반이면 기입, 순수 내 생각이면 비움
+source: "" # 외부 자료 기반이면 "[[Archive/raw/...]]" 또는 URL 기입, 순수 내 생각이면 비움
 stage: seed # BRAIN 성장 단계: seed | bloom | connected
 ---
 

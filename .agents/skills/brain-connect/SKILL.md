@@ -15,7 +15,7 @@ description: "`Ark/` 내 BRAIN Note의 `## 3. 활용` 섹션(Integrate·Navigate
 | `BLOCKS_DIR` | `Ark/Blocks/` | 수확된 원자 블록 (flat) |
 | `WIKI_DIR` | `Archive/wiki/` | AI 컴파일 위키 |
 | `PROJECTS_DIR` | `Lab/Projects/` | 🔵 적용 가능한 실행 프로젝트 연결 |
-| `EXCLUDE` | `_TEMPLATES_/`, `_BOT_PACK_/`, `.agents/`, `Welcome/`, `AGENTS.md`, `GEMINI.md` | 검색 제외 대상 |
+| `EXCLUDE` | `_TEMPLATES_/`, `_BOT_PACK_/`, `.agents/`, `Welcome/`, `AGENTS.md`, `GEMINI.md`, `CLAUDE.md` | 검색 제외 대상 |
 
 ### 섹션 지도 (`_TEMPLATES_/BRAIN-Note.md` 1:1 매칭)
 | 연결 유형 | 노트 안 위치 |

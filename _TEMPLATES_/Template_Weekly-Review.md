@@ -36,7 +36,7 @@ source: 패스트캠퍼스 LLM Wiki 바이블 Clip 9.1.1
 
 ## 📚 배운 것 (Learnings)
 - 
-> `BRAIN-Note` 후보가 보이면 `Ark/<5개 방>/`으로 옮겨 심습니다.
+> `BRAIN-Note` 후보가 보이면 `Ark/<내 주제 방>/`으로 옮겨 심습니다.
 
 ---
 

@@ -19,7 +19,7 @@ description: "`Archive/` LLM Wiki 전체를 스캔해 깨진 링크·고아 페�
 | `WIKI_LOG` | `Archive/log.md` | 작업 원장 (`lint` 실행 시 항상 기록) |
 | `ROOM_ROOT` | `Archive/` | 방 루트 (`AGENTS.md`, `log.md` 외 `.md`가 있으면 미착륙) |
 | `OUTPUT_DIR` | `Outputs/` | 리포트를 파일로 남길 때의 단일 출구 (별도 `Archive/output/` 미사용) |
-| `EXCLUDE` | `_TEMPLATES_/`, `_BOT_PACK_/`, `.agents/`, `Welcome/`, `AGENTS.md`, `GEMINI.md`, `README.md` | 위키 카운트 및 고아 오탐 방지 제외 대상 |
+| `EXCLUDE` | `_TEMPLATES_/`, `_BOT_PACK_/`, `.agents/`, `Welcome/`, `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `README.md` | 위키 카운트 및 고아 오탐 방지 제외 대상 |
 | `PAGE_CAP` | `15` | 초기 위키 페이지 상한 (함정 `#4` 규모 함정 방어) |
 | `STALE_DAYS` | `180` | 최종 수정일(`created`/`modified`) 기준 구버전(`stale`) 판정 일수 |
 | `SYSTEM_FILES` | `index.md` · `AGENTS.md` | 시스템 파일 — 위키 페이지 수 및 고아 검사에서 제외 |

@@ -18,7 +18,7 @@ description: "`Archive/wiki/` 백과사전을 검색해 출처 인용과 함께 
 | `BLOCKS_DIR` | `Ark/Blocks/` | **L4 (명시 요청 시)** — 수확된 내 원자 지식 |
 | `TOPICS_DIR` | `Ark/` | **L4 (명시 요청 시)** — 내 공부·생각 노트 |
 | `OUTPUT_DIR` | `Outputs/` | 외부 공유·팀 배포·포트폴리오 최종 산출물 출구 |
-| `EXCLUDE` | `_TEMPLATES_/`, `_BOT_PACK_/`, `.agents/`, `Welcome/`, `AGENTS.md`, `GEMINI.md` | 검색 제외 대상 |
+| `EXCLUDE` | `_TEMPLATES_/`, `_BOT_PACK_/`, `.agents/`, `Welcome/`, `AGENTS.md`, `GEMINI.md`, `CLAUDE.md` | 검색 제외 대상 |
 | `PAGE_CAP` | `15` | 초기 위키 권장 상한 |
 
 ---
@@ -52,7 +52,7 @@ description: "`Archive/wiki/` 백과사전을 검색해 출처 인용과 함께 
 
 ### 3. 답변 후 처리 (휘발 방지 · 필요 시 1회 확인)
 - 단순 1회성 확인은 대화로 끝내고 `Archive/log.md`에만 남깁니다.
-- **내 생각 고정 (`Ark/`):** 질문·코칭 과정에서 새로 깨달았거나 바로잡은 핵심 개념이 있으면 *"방금 바로잡은 핵심 1가지를 `/brain-add-seed`로 `Ark/`에 심거나 `Daily-Reflect`에 남길까요?"*라고 1줄 제안합니다.
+- **내 생각 고정 (`Ark/`):** 질문·코칭 과정에서 새로 깨달았거나 바로잡은 핵심 개념이 있으면 *"방금 바로잡은 핵심 1가지를 `/brain-add-seed`로 `Ark/`에 심거나 `Daily-Reflect`에 남길까요?"*라고 1줄 제안합니다. (`Daily-Reflect` 저장 시 `Ark/기록-인사이트/` 폴더 미존재 시 생성하고 `_TEMPLATES_/Daily-Reflect.md`의 `{{date:YYYY-MM-DD}}`를 실제 날짜로 치환합니다.)
 - **위키 환류 / 산출물 연결:** 재사용 가치가 있는 분석은 승인 후 `Archive/wiki/<카테고리>/` 편입(`🔄` 마크) 또는 팀 배포·발표용 완성본은 루트 `Outputs/`로 연결합니다.
 
 ### 4. `Archive/log.md` 기록 (항상 기록)

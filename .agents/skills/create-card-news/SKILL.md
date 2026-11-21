@@ -21,4 +21,4 @@ description: 볼트의 노트(BRAIN Note · `Archive/wiki` 페이지) 또는 완
    - `Card 1 (Cover 후크)` → `Card 2 (문제·배경)` → `Card 3 (핵심 원리·구조)` → `Card 4 (실전 적용·체크리스트)` → `Card 5 (결론 한 줄 & 다음 걸음)`
    - 원문에 없는 과장된 주장이나 근거 없는 수치는 절대 지어내지 않습니다.
 3. **공유 캡션 작성:** 메신저·노션·SNS 공유용 2~3문장 + 해시태그 5~7개 포함.
-4. **저장 (`type: output` 5규약 준수):** `OUTPUT_DIR/YYYY-MM-DD - [주제] 카드뉴스.md`로 저장하고 원본 노트를 `source:`에 링크합니다.
+4. **저장 (`type: output` 5규약 준수):** `OUTPUT_DIR`(미존재 시 자동 생성)에 `YYYY-MM-DD - [주제] 카드뉴스.md`로 저장하고 5규약(`type: output`, `created: YYYY-MM-DD`, `tags: [...]`, `status: draft`, `source: "[[원본 노트 경로]]"`)을 정확히 채웁니다.

@@ -18,7 +18,8 @@ description: 지금 세션에서 한 작업을 정리해 오늘 Daily Note(`Ark/
 | `TASKS_DIR` | `Lab/Tasks/` | 관련 태스크 `## 💡 세션 메모 & 다음 태스크` |
 
 ## 에이전트 실행 절차
-1. **재료 읽기:** 오늘 Daily Note의 `LOG_HEADING`, 현재 대화 맥락(**무엇을 · 왜**), 실제로 생성/수정한 산출물 경로를 확인합니다. (Daily Note가 없으면 임의 생성 금지, 먼저 알림)
+1. **재료 읽기 & 데일리 노트 확인:** 오늘 Daily Note(`DAILY_DIR/{오늘 YYYY-MM-DD}.md`)의 `LOG_HEADING`, 현재 대화 맥락(**무엇을 · 왜**), 실제로 생성/수정한 산출물 경로를 확인합니다.
+   - 만약 `DAILY_DIR` 폴더나 오늘 Daily Note가 아직 없다면 멈추지 말고 *"오늘 날짜 Daily Note가 아직 없어 기본 뼈대를 만든 뒤 로그를 남길까요?"*라고 1줄 확인한 뒤, 폴더 생성 및 `_TEMPLATES_/Daily-Note.md`(`{{date:YYYY-MM-DD}}`, `{{date-1d:YYYY-MM-DD}}`, `{{date+1d:YYYY-MM-DD}}` 치환, `## 오늘의 계획`은 빈칸 유지)로 파일을 생성합니다.
 2. **요약 제안 (확정 전 — Editor-in-Chief):**
    ```markdown
    ### HH:MM · 세션 요약

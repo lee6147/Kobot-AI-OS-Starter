@@ -13,7 +13,7 @@ description: "신규 코봇 조원의 볼트(Kobot-AI-OS-Starter)를 첫 실행 
 |---|---|---|
 | `STATUS_FILE` | `0_Me/ONBOARDING_STATUS.md` | 온보딩 완료 여부(`completed: false → true`) |
 | `REGS_FILE` | `0_Me/_FRONTMATTER_REGS.md` | 5규약 및 본인 맞춤형 `tags` 허용 목록 |
-| `TEMPLATES_DIR` | `_TEMPLATES_/` | `5S-자가진단 워크시트`, `BRAIN-Note`, `Daily-Note`, `Daily-Reflect`, `Source-Article`, `Template_Project`, `Template_Task`, `Template_Weekly-Review`, `자가진단-3축`, `30-90-365 체크리스트`, `Web-Clipper/*.json` 4종 |
+| `TEMPLATES_DIR` | `_TEMPLATES_/` | `Before-Diagnosis`, `5S-자가진단 워크시트`, `BRAIN-Note`, `Daily-Note`, `Daily-Reflect`, `Source-Article`, `Template_Project`, `Template_Task`, `Template_Weekly-Review`, `자가진단-3축`, `30-90-365 체크리스트`, `Web-Clipper/*.json` 4종 |
 | `ARK_DIR` | `Ark/` | 맞춤형 주제 방 3~5개가 생성될 자리 (`Blocks/` 유지) |
 | `WIKI_DIR` | `Archive/wiki/` | `Ark/`와 1:1로 맞춘 위키 카테고리 폴더 및 `index.md` |
 
@@ -44,12 +44,12 @@ description: "신규 코봇 조원의 볼트(Kobot-AI-OS-Starter)를 첫 실행 
 1. `Ark/<맞춤방>/`, `Ark/기록-인사이트/Daily/`, `Ark/기록-인사이트/Reviews/`, `Archive/wiki/<맞춤방>/`, `Outputs/블로그/`, `Outputs/카드뉴스/` 폴더 생성 (`Ark/Blocks/`는 유지)
 2. `0_Me/Purpose-L1L2L3.md` 생성 (5규약 `type: me` + `L1 인생 목표 · L2 올해 역할 표 · L3 이번 분기 프로젝트 표` 구조로 직접 생성)
 3. `0_Me/My-Knowledge-Domain.md` 생성 (5규약 `type: me` + `0단계 프라이밍 · 1단계 3~5개 지식영역+태그` 구조로 직접 생성)
-4. `0_Me/5S-자가진단-YYYY-MM-DD.md` 생성 (`_TEMPLATES_/5S-자가진단 워크시트.md` 기반으로 4번 질문 결과 기록)
-5. `0_Me/_FRONTMATTER_REGS.md`의 `나의 주제 태그 목록`을 조원의 확정 태그 3~5개로 교체
+4. `0_Me/5S-자가진단-YYYY-MM-DD.md` 생성 (`_TEMPLATES_/5S-자가진단 워크시트.md` 기반으로 `{{date:YYYY-MM-DD}}`를 실제 날짜로 치환하고 `status: organized` 및 4번 질문 결과 기록)
+5. `0_Me/_FRONTMATTER_REGS.md`의 `나의 주제 태그 목록`을 조원의 확정 태그 3~5개로 교체 (단, 시스템 원장·회고용 `record`와 `Archive/raw/`용 `raw` 기본 허용은 유지)
 6. `Archive/wiki/index.md`에 확정된 3~5개 카테고리 섹션(`## 1. ...`) 및 1줄 설명 초기화
-7. `Lab/Projects/<첫 프로젝트명>.md` 생성 (`_TEMPLATES_/Template_Project.md` 기반으로 승인된 첫 프로젝트 1개 자동 생성)
-8. `AGENTS.md`와 `GEMINI.md`의 §1에 사용자 이름·역할 반영 (두 파일 해시 동일 유지)
-9. `0_Me/ONBOARDING_STATUS.md`를 `completed: true`, `user_name`, `track: cli`, `domain_tags` 기입으로 갱신
+7. `Lab/Projects/<첫 프로젝트명>.md` 생성 (`_TEMPLATES_/Template_Project.md` 기반으로 `{{date:YYYY-MM-DD}}`를 실제 날짜로 치환해 승인된 첫 프로젝트 1개 자동 생성)
+8. `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`의 §1에 사용자 이름·역할 반영 (세 파일 해시 동일 유지)
+9. `0_Me/ONBOARDING_STATUS.md`를 `completed: true`, `user_name`, `track: track-a`, `domain_tags` 기입으로 갱신
 10. `Archive/log.md`에 `## [YYYY-MM-DD HH:MM] init | [사용자명] 맞춤형 온보딩 완료` 기록
 
 ### 5. 첫 실전 행동 1개 즉시 유도
@@ -61,5 +61,5 @@ description: "신규 코봇 조원의 볼트(Kobot-AI-OS-Starter)를 첫 실행 
 
 ## 절대 하지 않는 것
 - ❌ 사용자 인터뷰 없이 임의로 폴더 5개 만들어 버리기 (⚠️ 함정 `#3` 남의 템플릿 복붙 방지)
-- ❌ `AGENTS.md`와 `GEMINI.md` 중 한쪽만 수정하고 다른 쪽 누락하기
+- ❌ `AGENTS.md`, `GEMINI.md`, `CLAUDE.md` 중 일부만 수정하고 나머지 누락하기
 - ❌ 한 번에 10개가 넘는 방을 만들어 2레벨 단순성 깨기

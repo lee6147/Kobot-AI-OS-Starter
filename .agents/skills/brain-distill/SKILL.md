@@ -46,7 +46,7 @@ description: 성숙한 `Ark/` BRAIN Note에서 재사용 가능한 원자 명제
 2. 대상 `Ark/` 노트를 읽고 추출 가능한 원자 블록 후보 **1~3개**를 `BlockType: "명제"` 형식으로 사용자에게 제안합니다.
 
 ### 2. 사용자 선택 확인 후 `Ark/Blocks/` 파일 생성
-승인된 항목만 `Ark/Blocks/<BlockType>-<명제>.md`로 생성합니다 (`Counter-argument`가 아닌 `Counter` 사용).
+승인된 항목만 `Ark/Blocks/`(미존재 시 폴더 생성)에 `<BlockType>-<명제>.md`로 생성합니다 (`Counter-argument`가 아닌 `Counter` 사용).
 
 **Frontmatter (`0_Me/_FRONTMATTER_REGS.md` 5규약 준수):**
 ```yaml

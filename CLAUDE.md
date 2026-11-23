@@ -8,11 +8,11 @@
 ## 0. 자동 온보딩 & 순차 코칭 부트스트랩 (최우선 규칙)
 
 1. 작업을 시작하기 전 반드시 `0_Me/ONBOARDING_STATUS.md`를 먼저 확인합니다.
-2. `completed: false` 상태라면:
-   - 사용자가 `"Part 1부터"` · `"처음부터 순서대로"` · `"/kobot-guide"`를 요청하면 `.agents/skills/kobot-guide/SKILL.md`의 **Stage 0(Part 1~3) → Stage 1(`/kobot-onboard`) → Stage 2~5** 순으로 차근차근 진행합니다.
-   - 사용자가 `"/kobot-onboard"` · `"폴더부터 세팅"`을 요청하면 바로 `.agents/skills/kobot-onboard/SKILL.md` 인터뷰를 시작합니다.
-   - 사용자가 별도 지정 없이 인사하거나 `"이 폴더 읽고 시작하자 / 뭐부터 하면 돼?"`라고 물으면, **`guide_stage: not-started`일 때 딱 1문장으로 먼저 확인**합니다: *"Part 1~3 핵심 마인드셋 워밍업(`Stage 0`)부터 차근차근 진행할까요, 아니면 먼저 내 폴더 세팅(`/kobot-onboard`)부터 할까요?"* *(이미 `guide_stage`가 `stage-0` 이상이면 중단된 `guide_step`을 확인해 `kobot-guide` 또는 `/kobot-onboard`로 바로 이어갑니다.)*
-3. `completed: true` 상태라면 아래 §1~§6 규칙을 따르며, 사용자가 `"이어서 하자"` 또는 순차 실습을 원할 때는 `0_Me/ONBOARDING_STATUS.md`의 `guide_stage`·`guide_step`을 확인해 `kobot-guide`를 이어갑니다.
+2. **명시한 시작 요청을 우선합니다:** `"파트 1부터 차근차근 진행하자"` · `"Part 1부터"` · `"처음부터 순서대로"`처럼 요청하면 `.agents/skills/kobot-guide/SKILL.md`의 **Stage 0(Part 1~3)**부터 시작합니다. 워밍업과 폴더 세팅 중 고르라는 질문을 다시 하지 않습니다. 기존 답변이 있으면 보존하고 해당 Part의 미완료 문항부터 이어갑니다. 문구를 인용한 검토·수정 요청은 실제 실습 개시로 취급하지 않습니다.
+3. `"/kobot-onboard"` · `"온보딩 시작"` · `"폴더부터 세팅"`을 명시하거나 가이드가 Stage 1에 도달했을 때 `.agents/skills/kobot-onboard/SKILL.md`를 실행합니다. **`completed: false`만으로 폴더 세팅을 먼저 시작하지 않습니다.**
+4. `"이어서 하자"` · `"/kobot-guide"` 또는 시작 위치를 지정하지 않은 **실습·진도 요청**은 `guide_stage`·`guide_step`과 상태 파일의 **대화 체크포인트**를 읽어 재개합니다. 진행 중인 질문·이해 확인·승인 대기가 있으면 완료 처리하지 않고 그 지점부터 이어갑니다(`completed: false`도 동일).
+5. 진도가 `not-started`이고 시작 위치도 지정하지 않은 인사·`"뭐부터 하면 돼?"`에만 딱 1문장으로 확인합니다: *"Part 1~3 워밍업부터 차근차근 진행할까요, 아니면 먼저 내 폴더 세팅부터 할까요?"* `"/kobot-guide"`를 요청했다면 Stage 0부터 바로 시작합니다.
+6. 순차 실습 요청에 따라 답변·진도를 기존 상태 파일과 실습 문서에 저장합니다(가이드 §1-B). 이 저장은 폴더 구조 생성 승인과 구분합니다. `completed: true`는 폴더 온보딩 완료이며 Part 1~9 전체 졸업을 뜻하지 않습니다. 온보딩 이후 일반 작업은 아래 §1~§6을 따릅니다.
 
 ---
 
@@ -50,7 +50,7 @@
 
 ## 4. `Archive/` LLM Wiki 운영 원칙
 
-1. **Ingest:** 외부 자료는 원본 수정·이동 없이 `Archive/raw/`에 **복사**한 뒤, 먼저 `Archive/wiki/index.md`를 확인해 구조(기존 갱신 vs 신규)를 제안·승인받고 `Archive/wiki/`에 작성합니다. `index.md`와 `log.md`를 같은 작업 안에 갱신합니다.
+1. **Ingest:** 외부 자료는 원래 파일과 본문을 보존해 `Archive/raw/`에 **복사**하며, 기존 raw는 재사용합니다. 등록 사본의 메타데이터·컴파일 성공 후 처리 상태 변경과 승인된 내부 이동은 `Archive/AGENTS.md` §4를 따릅니다. 위키 구조를 제안·승인받고 `index.md`·`log.md`를 함께 갱신합니다. 모든 위키 작성 경로는 `Archive/AGENTS.md` §3의 실제 페이지·신규 계획 점검을 적용합니다.
 2. **Query:** `Archive/wiki/index.md`를 먼저 읽어 관련 `wiki/` 페이지(필요 시 `raw/`)만 확인하고, 출처(`[wiki]`/`[raw]`/`[💡 내 지식]`/`[일반 지식]`)를 구분해 답합니다. 사용자가 백지 상태에서 요청하면 핵심 진단 질문 3~4개를 먼저 던져 빈틈을 코칭하며, `Archive/log.md`에 기록합니다.
 3. **Lint (`/lint` 주간 건강 점검):** 주 1회 깨진 링크, 고아 페이지, 구버전(`stale`), 5규약 표류, `index.md` 불일치를 10가지 기준으로 스캔해 진단 리포트를 먼저 제시하고, 사용자가 번호로 승인한 항목만 수정한 뒤 `index.md`와 `log.md`를 갱신합니다.
 

@@ -11,6 +11,8 @@ source: "[[_GUIDES_/Part1~3-핵심정리]]"
 
 > **용도:** `Part 1(1.3.3)` ~ `Part 3(3.1.4)` 핵심 진단을 한 장에 모은 경량 출발선입니다. 온보딩(`/kobot-onboard`)과 `/kobot-guide` Stage 0에서 대화로 채워 `0_Me/Before-Diagnosis.md`에 저장하고, 8주 뒤 `Part 9`에서 변화 대조 기준으로 다시 꺼내 봅니다.
 
+> **진행 중 저장:** 받은 답변부터 채우고 미응답 칸은 비워 둡니다(`status: draft`). 5개 진단과 마지막 주의사항 확인을 마쳤을 때만 `status: organized`로 바꿉니다. 다음 질문과 중단 위치는 `0_Me/ONBOARDING_STATUS.md`의 대화 체크포인트에 남깁니다.
+
 ---
 
 ## 1. Clip 1.3.3 — IDI 3리듬 자가진단 (3분 30초)

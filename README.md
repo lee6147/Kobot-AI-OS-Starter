@@ -19,10 +19,10 @@
 ## 30초 시작하기 (트랙 A · B 중 택 1)
 
 ### 트랙 A · 로컬 폴더 접근 AI 에이전트 (Antigravity · Claude Code · Cursor · Gemini CLI · Codex)
-1. 이 저장소를 `git clone`(또는 `Code` → `Download ZIP`)합니다. *(주의: 조원은 `lee6147/Kobot-AI-OS-Starter`에 푸시 권한이 없으며, 본인 개인 기록 `0_Me/`·`Ark/`를 공유 원격 `origin`에 올리지 마세요. 원격 백업이 필요하면 본인 Private 레포를 새 원격으로 연결해 사용하세요.)*
+1. 이 저장소를 `git clone`(또는 `Code` → `Download ZIP`)합니다. *(주의: 조원은 `lee6147/Kobot-AI-OS-Starter`에 푸시 권한이 없으며, 본인 개인 기록 `0_Me/`·`Ark/`를 공유 원격 `origin`에 올리지 마세요. 온보딩으로 개인화한 `AGENTS.md`·`GEMINI.md`·`CLAUDE.md`에도 목적·자료 경로·루틴이 들어가므로 공개 저장소나 PR에 올리지 마세요. 원격 백업이 필요하면 본인 Private 레포를 새 원격으로 연결해 사용하세요.)*
 2. **Obsidian을 켜지 말고** 이 폴더를 작업 경로로 AI 앱을 연 뒤, **바로 던지는 첫 마디 3가지** 중 하나로 시작하세요:
    1. **`"온보딩 시작"`** (또는 `/kobot-onboard`) — 내 역할·주제 방·5규약 태그 자동 세팅 *(최초 1회 권장)*
-   2. **`"/kobot-guide"`** (또는 `"Part 1부터 / Part 4부터 순서대로 같이 실습하자"`) — Part 1~3 워밍업(`Before-Diagnosis.md`)부터 Part 9 졸업까지 1:1 단계별 실습 코칭
+   2. **`"파트 1부터 차근차근 진행하자"`** (또는 `/kobot-guide`, `"Part 4부터 순서대로 실습하자"`) — Part 1~3 워밍업(`Before-Diagnosis.md`)부터 Part 9 졸업까지 1:1 단계별 실습 코칭. 받은 답변·다음 질문·승인 대기를 저장하므로 새 채팅에서는 `"이어서 하자"`로 재개합니다.
    3. **`"지금 공부한 거 정리해 줘 / 빈틈 체크해 줘"`** — *(온보딩 완료 후)* `/brain-add-seed`·`/ingest`·`/query`로 즉시 정리 및 역질문 코칭 *(미온보딩 시 자동으로 온보딩부터 안내)*
    *(슬래시 `/` 자동완성이 뜨지 않는 앱에서는 `"AGENTS.md 읽고 온보딩 시작해 줘"`나 `"오늘 작업 로그 남겨줘"`처럼 자연어로 요청하면 `.agents/skills/`를 읽어 동일하게 동작합니다.)*
 3. **Obsidian 1회 열기 예외 vs AI 창 대체법 구분:**

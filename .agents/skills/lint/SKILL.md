@@ -1,6 +1,6 @@
 ---
 name: lint
-description: "`Archive/` LLM Wiki 전체를 스캔해 깨진 링크·고아 페이지·중복·미착륙 파일·Frontmatter 5규약 표류·규모 상한(15)을 10가지 기준으로 점검하고, 고칠 목록을 심각도순으로 제안합니다. 사용자가 \"/lint\", \"위키 점검\", \"위키 정리\", \"건강 체크\", \"링크 깨진 거 확인\", \"index 맞는지 확인\" 등을 요청할 때 실행합니다. 자동 수정·자동 삭제 없이 진단 리포트를 먼저 제시하고, 사용자가 번호로 승인한 항목만 수정한 뒤 `Archive/wiki/index.md`와 `Archive/log.md`를 갱신합니다."
+description: "`Archive/` 위키의 건강 점검, 깨진 링크·중복·미착륙 파일·속성 표류·규모 진단을 요청하거나, 신규 작성 계획이 초기 권장 경고선에 닿을 때 사용합니다."
 ---
 
 # lint — AI 백과사전(`Archive/`) 정기 건강 점검
@@ -20,7 +20,7 @@ description: "`Archive/` LLM Wiki 전체를 스캔해 깨진 링크·고아 페�
 | `ROOM_ROOT` | `Archive/` | 방 루트 (`AGENTS.md`, `log.md` 외 `.md`가 있으면 미착륙) |
 | `OUTPUT_DIR` | `Outputs/` | 리포트를 파일로 남길 때의 단일 출구 (별도 `Archive/output/` 미사용) |
 | `EXCLUDE` | `_TEMPLATES_/`, `_BOT_PACK_/`, `.agents/`, `Welcome/`, `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `README.md` | 위키 카운트 및 고아 오탐 방지 제외 대상 |
-| `PAGE_CAP` | `15` | 초기 위키 페이지 상한 (함정 `#4` 규모 함정 방어) |
+| `PAGE_CAP` | `Archive/AGENTS.md` §3 참조 | 초기 실습의 권장 경고선 (절대 한도 아님) |
 | `STALE_DAYS` | `180` | 최종 수정일(`created`/`modified`) 기준 구버전(`stale`) 판정 일수 |
 | `SYSTEM_FILES` | `index.md` · `AGENTS.md` | 시스템 파일 — 위키 페이지 수 및 고아 검사에서 제외 |
 
@@ -28,7 +28,7 @@ description: "`Archive/` LLM Wiki 전체를 스캔해 깨진 링크·고아 페�
 
 ## 언제 사용하나요
 - 주 1회 정기 건강 점검 (`AGENTS.md` 주간 루틴)
-- `/ingest` 또는 `/brain-wiki-sync` 실행 전 위키 페이지 수가 상한(`PAGE_CAP = 15`)에 가까워졌을 때
+- `/ingest`·`/brain-wiki-sync`·`/query` 환류의 신규 계획이 `Archive/AGENTS.md` §3의 경고선에 닿을 때
 - `/query`에서 있어야 할 문서를 못 찾거나 링크·통계가 어긋났을 때
 
 ---
@@ -37,14 +37,14 @@ description: "`Archive/` LLM Wiki 전체를 스캔해 깨진 링크·고아 페�
 
 ### 0. 스캔 준비 — 반드시 실물 목록 3개를 먼저 실측합니다
 `Archive/wiki/index.md`에 적힌 숫자를 그대로 믿지 않고, 실제 디스크 파일 목록을 먼저 대조합니다:
-1. **실제 위키 페이지 목록:** `Archive/wiki/<내 카테고리>/*.md` (`SYSTEM_FILES` 및 `.gitkeep` 제외)
+1. **실제 위키 페이지 목록:** `Archive/wiki/` 전체 `.md` (`SYSTEM_FILES` 및 `.gitkeep` 제외, 모든 하위 목차도 페이지 수에서 제외)
 2. **실제 `raw` 파일 목록:** `Archive/raw/` 직속 파일(미착륙 후보) 및 5개 하위 폴더 파일 (`.gitkeep` 제외)
-3. **`index.md` 등재 항목:** `Archive/wiki/index.md` 내 `- [[Archive/wiki/...]]` 항목 수
+3. **`index.md` 등재 항목:** 루트 `Archive/wiki/index.md`에서 연결된 실존 하위 `index.md`를 따라 도달하는 페이지 집합 (방문한 목차와 페이지 중복 제외). 목차 파일 자체는 페이지 수·등재 페이지 수에서 제외합니다.
 
 **스캔 3원칙 (오탐 방지):**
 1. **코드펜스(```) 및 인라인 백틱(`) 내부의 예시 `[[링크]]`는 깨진 링크 검사에서 제외**합니다.
 2. **파일명 안의 `[대괄호]` 주의:** `2026-11-12 [출처] 제목`처럼 파일명에 대괄호가 들어 있을 수 있으므로 고정 문자열 매칭으로 실존 여부를 확인합니다.
-3. **`SYSTEM_FILES`(`index.md`, `AGENTS.md`)는 페이지 카운트와 고아 검사에서 제외**하며, `index.md`에서 오는 링크는 고아 판정용 인바운드로 세지 않습니다.
+3. **`SYSTEM_FILES`(`index.md`, `AGENTS.md`)는 페이지 카운트와 고아 검사에서 제외**하며, 모든 목차에서 오는 링크는 고아 판정용 인바운드로 세지 않습니다. 루트→하위 목차→페이지 경유는 정상 등재로 인정하고, 각 목차의 끊긴 링크는 검사합니다.
 
 ---
 
@@ -53,7 +53,7 @@ description: "`Archive/` LLM Wiki 전체를 스캔해 깨진 링크·고아 페�
 | # | 검사 항목 | 점검 내용 | 심각도 |
 |:--:|---|---|:--:|
 | **1** | **깨진 wikilink** | `Archive/wiki/` 및 `index.md` 내 `[[링크]]`·`![[이미지]]` 대상 파일 실존 여부 | 🔴 Critical |
-| **2** | **고아 페이지 (Orphan)** | `index.md` 미등재(`🔴`) 또는 `index.md` 외 인바운드/연결(`related`·`Ark`·`Lab`) 0건(`🟡`) | 🔴 / 🟡 |
+| **2** | **고아 페이지 (Orphan)** | 루트·연결된 하위 목차에서 미등재(`🔴`) 또는 목차 외 인바운드/연결(`related`·`Ark`·`Lab`) 0건(`🟡`) | 🔴 / 🟡 |
 | **3** | **Stale (구버전)** | `STALE_DAYS`(180일) 초과 방치 또는 `lint_flag: stale` 표시 문서 | 🟡 Warning |
 | **4** | **중복 / 과잉 규칙 파일** | 제목·주제가 겹치는 위키 페이지, 동명 `raw` 파일(diff 대조 필수), 또는 하위 폴더의 중복 시스템 규칙(`AGENTS.md` 등) | 🟡 Warning |
 | **5** | **빈 페이지 / 부실 명제** | 본문 100자 미만 또는 `## 핵심 요약` · `## 핵심 명제` 섹션 누락 | 🟡 Warning |
@@ -61,7 +61,7 @@ description: "`Archive/` LLM Wiki 전체를 스캔해 깨진 링크·고아 페�
 | **7** | **Frontmatter 5규약** | `0_Me/_FRONTMATTER_REGS.md` 기준 `type: wiki`, `created`, `tags`(내 주제 태그), `status`(`draft|organized|shared`), `source` 누락·표류 | 🟡 Warning |
 | **8** | **`raw` 미연결** | `Archive/raw/`(문서류) 중 어느 `wiki` 페이지도 `source`로 참조하지 않는 미컴파일 원본 | 🟡 Warning |
 | **9** | **미착륙 파일** | `Archive/raw/` 루트 직속 파일(5분류 밖) 또는 `Archive/` 루트에 뜬 미분류 `.md` | 🟡 Warning |
-| **10** | **규모 상한 & 흐름 정체** | 위키 페이지 `PAGE_CAP(15)` 근접/초과, `status: draft` 장기 적체 | 🟡 Warning |
+| **10** | **규모 경고 & 흐름 정체** | 정본의 경고선에 닿는 신규 계획, 목차 비대화·검색 누락·`draft` 장기 적체 (숫자만으로 장애 판정하지 않음) | 🟡 Warning |
 
 ---
 
@@ -73,7 +73,7 @@ description: "`Archive/` LLM Wiki 전체를 스캔해 깨진 링크·고아 페�
 ## 요약
 | 항목 | 실측 | 권장 기준 | 판정 |
 |---|:--:|:--:|:--:|
-| 위키 페이지 (`WIKI_DIR`) | N개 | 5~15개 (`PAGE_CAP=15`) | 🟢 / 🟡 / 🔴 |
+| 위키 페이지 (`WIKI_DIR`) | N개 (신규 계획 K개) | `Archive/AGENTS.md` §3의 초기 경고선 | 🟢 / 🟡 |
 | 원본 파일 (`RAW_DIR`) | 문서 N개 (assets N개) | 미컴파일 0건 권장 | 🟢 / 🟡 |
 | `index.md` 등재 정합 | N / N 일치 | 불일치 0건 | 🟢 / 🔴 |
 | 깨진 링크 / 5규약 위반 | N건 / N건 | 0건 | 🟢 / 🔴 / 🟡 |
@@ -99,6 +99,7 @@ description: "`Archive/` LLM Wiki 전체를 스캔해 깨진 링크·고아 페�
 ### 3. 처방 실행 (사용자 번호 승인 후에만) & 원장 기록
 
 1. **승인 우선:** 사용자가 번호로 승인한 항목만 수정합니다. (`Archive/raw/` 원본 내용은 절대 수정하지 않습니다.)
+   - 승인된 볼트 내부 이동은 `Archive/AGENTS.md` §4에 따라 전체 인바운드 링크와 본문/파일 해시를 먼저 확인하고, 이동·링크 교정·목차/로그 갱신을 한 작업으로 처리합니다. 완료 후 링크와 본문 보존을 검증합니다. 외부 원본 이동·동명 덮어쓰기는 하지 않습니다.
 2. **`Archive/wiki/index.md` 갱신:** 점검 결과에 따라 `총 위키 페이지` 및 `마지막 갱신(또는 마지막 lint)` 정보를 최신화합니다.
 3. **`Archive/log.md` 기록 (수정이 없어도 항상 append):**
    ```markdown

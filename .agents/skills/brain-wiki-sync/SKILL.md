@@ -1,6 +1,6 @@
 ---
 name: brain-wiki-sync
-description: "`Ark/Blocks/`의 수확된 원자 블록(compiled_to 미기입)을 `Archive/wiki/<내 카테고리>/` AI 백과사전으로 컴파일하고 `index.md`와 `log.md`를 함께 갱신합니다. 사용자가 \"/brain-wiki-sync\", \"BWS\", \"내 지식을 위키에\", \"블록 위키로\"를 요청할 때 실행합니다."
+description: "사용자가 \"/brain-wiki-sync\", \"BWS\", \"내 지식을 위키에\", \"블록 위키로\"처럼 Ark/Blocks의 미컴파일 블록을 위키에 반영하도록 요청할 때 사용합니다."
 ---
 
 # brain-wiki-sync — 내 원자 지식 → AI 백과사전(`Archive/wiki/`) 컴파일
@@ -16,7 +16,7 @@ description: "`Ark/Blocks/`의 수확된 원자 블록(compiled_to 미기입)을
 | `WIKI_DIR` | `Archive/wiki/` | 출력 — 온보딩 시 생성한 카테고리 하위 폴더들 (`Ark/`와 1:1) |
 | `WIKI_INDEX` | `Archive/wiki/index.md` | 위키 카탈로그 (`📥`/`💡`/`🔄` 마크 동기화) |
 | `WIKI_LOG` | `Archive/log.md` | `Archive/` 작업 원장 |
-| `PAGE_CAP` | `15` | 초기 위키 권장 상한 (`12` 이상 시 신규 생성 억제, `15+` 시 `/lint` 건강 점검 먼저) |
+| `PAGE_CAP` | `Archive/AGENTS.md` §3 참조 | 초기 실습 경고선 및 모든 위키 작성의 공통 점검 기준 |
 
 ---
 
@@ -24,7 +24,7 @@ description: "`Ark/Blocks/`의 수확된 원자 블록(compiled_to 미기입)을
 
 ### 0. 사전 점검 (실측 필수)
 실행 전 반드시 3가지를 실제 파일 기준으로 셉니다:
-1. **현재 위키 페이지 수:** `Archive/wiki/` 하위 카테고리의 실제 `.md` 수 (`AGENTS.md`, `index.md` 제외)
+1. **현재 위키 페이지 수:** `Archive/AGENTS.md` §3에 따라 `Archive/wiki/` 전체 하위의 실제 `.md` 수 (모든 `AGENTS.md`, `index.md` 제외)
 2. **전체 Block 수:** `Ark/Blocks/*.md` 수
 3. **미컴파일 Block 목록:** frontmatter `compiled_to:`가 비어 있는 Block만 추출
 
@@ -35,6 +35,8 @@ description: "`Ark/Blocks/`의 수확된 원자 블록(compiled_to 미기입)을
 4. 내 Block의 주장이 기존 외부 자료 기반 위키 내용과 충돌하면 **모순 발견(`⚡`)**으로 명확히 보고합니다.
 
 > **승인 필수:** 제안 표(`🔄 갱신` / `🆕 신규` / `⚡ 모순`)를 먼저 보여주고 사용자 확인 후 파일을 작성합니다.
+
+계획의 실제 N(현재 페이지)·K(신규 예정)를 세어 `Archive/AGENTS.md` §3을 적용합니다. 경고선에 닿는 신규 계획은 `/lint` 진단과 대안을 먼저 검토하고 승인받은 계획만 실행합니다. K = 0인 갱신은 페이지 수만으로 차단하지 않습니다.
 
 ### 2. 위키 페이지 작성 또는 갱신
 **Frontmatter (`0_Me/_FRONTMATTER_REGS.md` 5규약 준수):**
@@ -74,7 +76,7 @@ related:
 - 컴파일된 각 `Ark/Blocks/*.md` 파일의 **본문은 건드리지 않고**, frontmatter의 `compiled_to:` 필드에만 대상 위키 페이지 경로를 기록합니다.
 
 ### 5. 완료 보고
-- 신규/갱신 위키 수, 현재 용량(`N / 15`), `compiled_to` 표식 처리 건수, 발견된 모순(`⚡`) 요약을 보고합니다.
+- 신규/갱신 위키 수, 실제 페이지 수 N과 정본의 권장 경고선, `compiled_to` 표식 처리 건수, 발견된 모순(`⚡`) 요약을 보고합니다.
 
 ---
 
@@ -84,4 +86,4 @@ related:
 - ❌ `Building Block` 본문 내용 수정하기 (`compiled_to:` 필드만 기록)
 - ❌ 기존 위키 문장 삭제하거나 모순(`⚡`)을 조용히 덮어쓰기
 - ❌ `Archive/wiki/index.md` 또는 `Archive/log.md` 갱신 빠뜨리기
-- ❌ `PAGE_CAP(15)` 초과 상태에서 `/lint` 건강 점검 없이 새 위키 페이지 늘리기
+- ❌ `Archive/AGENTS.md` §3의 사전 점검·선택 없이 경고선에 닿는 신규 페이지 작성하기
